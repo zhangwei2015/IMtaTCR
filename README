@@ -22,6 +22,8 @@ Installation
 Version: V1.0.0
 
 1. Usage:
+	perl IMtaTCR.pl -i -o -R [parameters]
+
 [parameters]
             IMtaTCR: to identify tumor-associated TCRs (taTCRs) by comparing the TCR repertoire in tumors with that in normal tissue
 
