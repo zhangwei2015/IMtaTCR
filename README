@@ -1,0 +1,54 @@
+######################
+Introduction
+
+IMtaTCR: to identify tumor-associated TCRs by comparing the TCR clusters in tumor tissues to in adjacent normal tissues
+
+######################
+System Requirement
+
+It runs on Linux systems.
+Perl, R, and python3 need to be installed for your system
+
+######################
+Installation
+
+   1. Before use it, R package "DEGseq" is required to install
+   2. Download the IMtaTCR.tar.gz to your directory, uncompress it.
+        tar -zxvf IMtaTCR.tar.gz
+
+######################
+
+
+Version: V1.0.0
+
+1. Usage:
+[parameters]
+            IMtaTCR: to identify tumor-associated TCRs (taTCRs) by comparing the TCR repertoire in tumors with that in normal tissue
+
+            -i      <S> input file
+            -o      <S> out directory
+            -R      <S> directory of Rscript [usr/bin/Rscript]
+
+            -n     <I>  total read number for individual's normalization [100000]
+            -f1     <Fl> select cluster with the frequency TCRs in tumor for GLIPH2 and iSMART [0.001]
+            -f2     <Fl> select cluster with the frequency TCRs in tumor for ALICE [0.0001]
+            -l1     <I> select cluster with foldchange from DEGseq for GLIPH2 and iSMART [2]
+            -l2     <I> select cluster with ratio(tumor/normal) for ALICE [2]
+            -p1     <Fl> select cluster with p-value from DEGseq for GLIPH2 and iSMART [1e-10]
+
+Note
+            1. If the sequence including C region, the compulsory parameters: -i -o R
+
+
+######################
+The format of -i: four columns: <individual><sample><flag><data>
+	<individual>: the name of patient
+	<sample>: sample name
+	<flag>: "Tumor" or "Normal"
+	<data>: the path of sequencing data
+	see the example in "IMtaTCR/Test/input.txt"
+
+2. After running the IMtaTCR.pl program, *.sh would be generated, then running the *.sh as follows:
+	1)sh step1.sh
+	2)sh step2_gliph2.sh, step2_ismart.sh, and step2_alice.sh
+	3)sh step3.sh
